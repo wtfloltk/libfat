@@ -15,7 +15,7 @@ default: release
 
 all: release dist
 
-release: nds-release gba-release cube-release wii-release
+release: nds-release gba-release cube-release wii-release wiiu-release
 
 ogc-release: include/libfatversion.h cube-release wii-release
 
@@ -31,7 +31,10 @@ cube-release: include/libfatversion.h
 wii-release: include/libfatversion.h
 	$(MAKE) -C libogc PLATFORM=wii BUILD=wii_release
 
-debug: nds-debug gba-debug cube-debug wii-debug
+wiiu-release: include/libfatversion.h
+	$(MAKE) -C wiiu BUILD=release
+
+debug: nds-debug gba-debug cube-debug wii-debug wiiu-debug
 
 ogc-debug: cube-debug wii-debug
 
@@ -48,7 +51,10 @@ cube-debug: include/libfatversion.h
 wii-debug: include/libfatversion.h
 	$(MAKE) -C libogc PLATFORM=wii BUILD=cube_debug
 
-clean: nds-clean gba-clean ogc-clean
+wiiu-debug: include/libfatversion.h
+	$(MAKE) -C wiiu BUILD=debug
+
+clean: nds-clean gba-clean ogc-clean wiiu-clean
 
 nds-clean:
 	$(MAKE) -C nds clean
@@ -59,7 +65,10 @@ gba-clean:
 ogc-clean:
 	$(MAKE) -C libogc clean
 
-dist-bin: nds-dist-bin gba-dist-bin ogc-dist-bin
+wiiu-clean:
+	$(MAKE) -C wiiu clean
+
+dist-bin: nds-dist-bin gba-dist-bin ogc-dist-bin wiiu-dist-bin
 
 nds-dist-bin: include/libfatversion.h nds-release distribute/$(VERSTRING)
 	$(MAKE) -C nds dist-bin
@@ -69,6 +78,9 @@ gba-dist-bin: include/libfatversion.h gba-release distribute/$(VERSTRING)
 
 ogc-dist-bin: include/libfatversion.h ogc-release distribute/$(VERSTRING)
 	$(MAKE) -C libogc dist-bin
+
+wiiu-dist-bin: include/libfatversion.h wiiu-release distribute/$(VERSTRING)
+	$(MAKE) -C wiiu dist-bin
 
 dist-src: distribute/$(VERSTRING)
 	@tar --exclude=.svn --exclude=*CVS* -cvjf distribute/$(VERSTRING)/libfat-src-$(VERSTRING).tar.bz2 \
@@ -94,7 +106,7 @@ include/libfatversion.h : Makefile
 	@echo >> $@
 	@echo "#endif // __LIBFATVERSION_H__" >> $@
 
-install: nds-install gba-install ogc-install
+install: nds-install gba-install ogc-install wiiu-install
 
 nds-install: nds-release
 	$(MAKE) -C nds install
@@ -104,3 +116,7 @@ gba-install: gba-release
 
 ogc-install: cube-release wii-release
 	$(MAKE) -C libogc install
+
+wiiu-install: wiiu-release
+	$(MAKE) -C wiiu install
+
