@@ -5,7 +5,8 @@ ifeq ($(strip $(DEVKITPPC)),)
 $(error "Please set DEVKITPPC in your environment. export DEVKITPPC=<path to>devkitPPC)
 endif
 
-include $(DEVKITPPC)/wii_rules
+MACHDEP = -DESPRESSO -mwup -mcpu=750 -meabi -mhard-float
+include $(DEVKITPPC)/base_rules
 
 #---------------------------------------------------------------------------------
 # BUILD is the directory where object files & intermediate files will be placed

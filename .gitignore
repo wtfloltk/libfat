@@ -10,4 +10,5 @@ distribute
 gba/include
 libogc/include
 nds/include
-/wiiu/wiiu_release
+/wiiu/release
+/wiiu/lib
