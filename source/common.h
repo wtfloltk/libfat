@@ -69,8 +69,8 @@
 
 // Platform specific options
 #if   defined (__wiiu__)
-   #define DEFAULT_CACHE_PAGES 512
-   #define DEFAULT_SECTORS_PAGE 128
+   #define DEFAULT_CACHE_PAGES 4
+   #define DEFAULT_SECTORS_PAGE 64
 //   #define USE_RTC_TIME
 #elif   defined (__wii__)
    #define DEFAULT_CACHE_PAGES 4
