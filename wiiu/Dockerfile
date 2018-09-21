@@ -9,7 +9,6 @@ WORKDIR libfat
 
 RUN make wiiu-release && \
 	find $DEVKITPRO/portlibs -maxdepth 3 -type f -delete && \
-	find $DEVKITPRO/portlibs && \
 	make -C wiiu install && \
 	cp -r ${DEVKITPRO}/portlibs /artifacts
 
