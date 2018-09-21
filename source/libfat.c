@@ -144,7 +144,8 @@ void fatUnmount (const char* name) {
 	_FAT_mem_free (devops);
 }
 
-bool fatInit (uint32_t cacheSize, bool setAsDefaultDevice) {
+
+bool fatInitEx (uint32_t cacheSize, bool setAsDefaultDevice, uint32_t cacheSectorsPage) {
 	int i;
 	int defaultDevice = -1;
 	const DISC_INTERFACE *disc;
@@ -157,7 +158,7 @@ bool fatInit (uint32_t cacheSize, bool setAsDefaultDevice) {
 		if (!disc) {
 			continue;
 		}
-		if (fatMount (_FAT_disc_interfaces[i].name, disc, 0, cacheSize, DEFAULT_SECTORS_PAGE)) {
+		if (fatMount (_FAT_disc_interfaces[i].name, disc, 0, cacheSize, cacheSectorsPage)) {
 			// The first device to successfully mount is set as the default
 			if (defaultDevice < 0) {
 				defaultDevice = i;
@@ -201,6 +202,10 @@ bool fatInit (uint32_t cacheSize, bool setAsDefaultDevice) {
 	}
 
 	return true;
+}
+
+bool fatInit (uint32_t cacheSize, bool setAsDefaultDevice) {
+	return fatInitEx(cacheSize, setAsDefaultDevice, DEFAULT_SECTORS_PAGE);
 }
 
 bool fatInitDefault (void) {

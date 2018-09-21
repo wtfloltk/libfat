@@ -59,11 +59,18 @@ extern "C" {
 #  endif
 #endif
 
+
 /*
 Initialise any inserted block-devices.
 Add the fat device driver to the devoptab, making it available for standard file functions.
 cacheSize: The number of pages to allocate for each inserted block-device
 setAsDefaultDevice: if true, make this the default device driver for file operations
+cacheSectorsPage: The cache sectors per page value
+*/
+extern bool fatInitEx (uint32_t cacheSize, bool setAsDefaultDevice, uint32_t cacheSectorsPage);
+
+/*
+Calls fatInit cacheSectorsPage optimised for the host system.
 */
 extern bool fatInit (uint32_t cacheSize, bool setAsDefaultDevice);
 
