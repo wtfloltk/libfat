@@ -5,7 +5,7 @@ ifeq ($(strip $(DEVKITPPC)),)
 $(error "Please set DEVKITPPC in your environment. export DEVKITPPC=<path to>devkitPPC)
 endif
 
-MACHDEP = -DESPRESSO -mcpu=750 -meabi -mhard-float
+MACHDEP = -D__wiiu__ -mcpu=750 -meabi -mhard-float
 include $(DEVKITPPC)/base_rules
 export PORTLIBS	:= $(DEVKITPRO)/portlibs/ppc
 
