@@ -41,7 +41,7 @@
 #endif
 
 // Platform specific includes
-#if   defined (__wiiu__)
+#if   defined (ESPRESSO)
    #include <iosuhax_disc_interface.h>
    typedef uint8_t u8;
    typedef uint16_t u16;
@@ -68,7 +68,7 @@
 #endif
 
 // Platform specific options
-#if   defined (__wiiu__)
+#if   defined (ESPRESSO)
    #define DEFAULT_CACHE_PAGES 512
    #define DEFAULT_SECTORS_PAGE 128
 //   #define USE_RTC_TIME
