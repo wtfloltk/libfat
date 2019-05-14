@@ -5,8 +5,9 @@ ifeq ($(strip $(DEVKITPPC)),)
 $(error "Please set DEVKITPPC in your environment. export DEVKITPPC=<path to>devkitPPC)
 endif
 
-MACHDEP = -DESPRESSO -mwup -mcpu=750 -meabi -mhard-float
+MACHDEP = -DESPRESSO -mcpu=750 -meabi -mhard-float
 include $(DEVKITPPC)/base_rules
+export PORTLIBS	:= $(DEVKITPRO)/portlibs/ppc
 
 #---------------------------------------------------------------------------------
 # BUILD is the directory where object files & intermediate files will be placed
