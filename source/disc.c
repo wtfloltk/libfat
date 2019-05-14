@@ -39,7 +39,7 @@ The list is terminated by a NULL/NULL entry.
 */
 
 /* ====================== Wii U ====================== */
-#if   defined (ESPRESSO)
+#if   defined (__wiiu__)
 #include <iosuhax_disc_interface.h>
 
 static const DISC_INTERFACE* get_io_wiiu_sd (void) {

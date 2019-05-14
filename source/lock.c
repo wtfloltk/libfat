@@ -1,6 +1,6 @@
 #include "common.h"
 
-#if !defined(USE_LWP_LOCK) && !defined(ESPRESSO)
+#if !defined(USE_LWP_LOCK) && !defined(__wiiu__)
 
 #ifndef mutex_t
 typedef int mutex_t;

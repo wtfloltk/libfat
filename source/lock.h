@@ -31,7 +31,7 @@
 
 #include "common.h"
 
-#if defined(ESPRESSO)
+#if defined(__wiiu__)
 
 extern void (* OSInitMutex)(void* mutex);
 extern void (* OSLockMutex)(void* mutex);
