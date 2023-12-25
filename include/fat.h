@@ -36,7 +36,7 @@
 extern "C" {
 #endif
 
-#include "libfatversion.h"
+#include <libfatversion.h>
 
 // When compiling for NDS, make sure NDS is defined
 #ifndef NDS
