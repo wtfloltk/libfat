@@ -36,7 +36,16 @@
 extern "C" {
 #endif
 
-#include <libfatversion.h>
+#ifndef __LIBFATVERSION_H__
+#define __LIBFATVERSION_H__
+
+#define _LIBFAT_MAJOR_	1
+#define _LIBFAT_MINOR_	0
+#define _LIBFAT_PATCH_	11
+
+#define _LIBFAT_STRING "libFAT"
+
+#endif // __LIBFATVERSION_H__
 
 // When compiling for NDS, make sure NDS is defined
 #ifndef NDS
